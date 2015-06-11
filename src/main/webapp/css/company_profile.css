@@ -1,0 +1,46 @@
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 210px;
+}
+#wrapper > div{
+    padding-bottom:5px;
+}
+
+#edit_button{
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 110px;
+}
+#description{
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width:340px;
+}
+
+input,textarea {
+    border: none;
+    color: #26a673;
+/*    background-color: white;*/
+    padding: 5px;
+}
+input{
+    width: 200px;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #26a673;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #26a673;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #26a673;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #26a673;
+}
+
