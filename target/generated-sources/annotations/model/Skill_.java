@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import model.JobPostSkillRel;
 import model.JobSeekerSkillRel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-06-30T22:56:51")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-07-01T02:23:15")
 @StaticMetamodel(Skill.class)
 public class Skill_ { 
 

@@ -26,11 +26,9 @@ function drawPosts(posts, appliedPosts) {
 
 function drawPost(post, index, appliedPosts) {
     var tags = "";
-    // if (post.jobPostSkillRels != null) {
     for (var i = 0; i < post.jobPostSkillRels.length; i++) {
         tags += "<div class=\"post-tag\">" + post.jobPostSkillRels[i].skill.name + "</div>";
     }
-    //   }
     var row = $("<tr />");
     $("#post_table").append(row);
     var apply = "";

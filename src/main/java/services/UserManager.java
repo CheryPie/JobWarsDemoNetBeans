@@ -20,10 +20,6 @@ import javax.ws.rs.core.Response;
 import model.LoginUser;
 import session.LoginSessionBean;
 
-/**
- *
- * @author Bori
- */ 
 @Stateless
 @Path("user")
 public class UserManager {
@@ -32,7 +28,7 @@ public class UserManager {
     LoginUserDAO userDAO;
     
     @Inject
-    private LoginSessionBean currentLog;
+    LoginSessionBean currentLog;
     
     @POST
     @Path("login")
@@ -41,7 +37,6 @@ public class UserManager {
         LoginUser currentUser = userDAO.autenticate(loginUser.getUserName(), loginUser.getPassword());
         if (currentUser == null) {
             return Response.status(HttpURLConnection.HTTP_UNAUTHORIZED).build();
-
         }
         currentLog.setCurrentLoginUser(currentUser);
         return Response.status(HttpURLConnection.HTTP_OK).build();
@@ -51,7 +46,8 @@ public class UserManager {
     @Path("register_company")
     @Consumes(MediaType.APPLICATION_JSON)
     public void registerCompany(LoginUser newCompany) {
-        if (newCompany.getUserName() != null && newCompany.getPassword() != null && !userDAO.isExist(newCompany.getUserName())) {
+        if (newCompany.getUserName() != null && newCompany.getPassword() != null 
+                && !userDAO.isExist(newCompany.getUserName())) {
             userDAO.createCompany(newCompany);
         }
     }
@@ -60,19 +56,26 @@ public class UserManager {
     @Path("register_seeker")
     @Consumes(MediaType.APPLICATION_JSON)
     public void registerSeeker(LoginUser newSeeker) {
-        if (newSeeker.getUserName() != null && newSeeker.getPassword() != null && !userDAO.isExist(newSeeker.getUserName())) {
+        if (newSeeker.getUserName() != null && newSeeker.getPassword() != null 
+                && !userDAO.isExist(newSeeker.getUserName())) {
             userDAO.createJobSeeker(newSeeker);
         }
     }
     
     @GET
     @Produces("text/plain")
-    public String getLoggedUserPage(){ 
+    public String getLoggedUserPage(){
         if(currentLog.getCurrentLoginUser().getRole().getLoginUserRoleId() == 1){
             return "post_for_seeker.html";
         }
         else{
             return "company_page.html";
         }
-    }   
+    }
+    
+    @GET
+    @Path("logout")
+    public void logout(){
+        currentLog.setCurrentLoginUser(null);
+    }
 }

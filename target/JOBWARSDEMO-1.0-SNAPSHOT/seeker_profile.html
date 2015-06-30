@@ -16,6 +16,7 @@ and open the template in the editor.
         <script type="text/javascript" src="js/edit_seeker_profile.js"></script>
         <script type="text/javascript" src="js/load_seeker_profile.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
     <body>
         <header>
             <div id="logoContainer"></div>
@@ -24,7 +25,7 @@ and open the template in the editor.
                     <li><a href="post_for_seeker.html" data-toggle="tooltip"  title="Oбяви"><img src="img/adv_grey.png"></a></li>
                     <li><a href="seeker_applied_posts.html"  data-toggle="tooltip" title="Къде съм кандидатствал"><img src="img/adv_grey.png"></a></li>
                     <li><a href="seeker_profile.html"  data-toggle="tooltip" title="Профил"><img src="img/profi.png" id="profile"></a></li>
-                    <li><a href="LogoutServlet"  data-toggle="tooltip"  title="Изход"><img src="img/settings.png" id="settings"></a></li>
+                    <li><a href="" onclick="logout()" data-toggle="tooltip" title="Изход"><img onclick="logout()" src="img/settings.png" id="settings"></a></li>
                 </ul>
                 <hr/>
             </nav>
@@ -46,13 +47,8 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label for="skill">Добави умение</label>
-                            <!--                            <input type="text" onkeyup="changeInput(this.value)">-->
                             <input type="text" id="skill" name="skill">
                         </div>
-                        <!--                        <div>
-                                                    <table id="autocomplete_it">
-                                                    </table>
-                                                </div>-->
                         <div id="skill_field">
                         </div>
                     </div>

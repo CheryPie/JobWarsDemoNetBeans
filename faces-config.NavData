@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project">
-        <Node id="register_company_old.html" x="150" y="300" zoom="true"/>
-        <Node id="register_company.html" x="650" y="150" zoom="true"/>
-        <Node id="company_page.html" x="400" y="450" zoom="true"/>
-        <Node id="post_for_seeker.html" x="150" y="600" zoom="true"/>
-        <Node id="seeker_profile.html" x="150" y="450" zoom="true"/>
-        <Node id="login.html" x="900" y="300" zoom="true"/>
-        <Node id="seeker_applied_posts.html" x="650" y="450" zoom="true"/>
-        <Node id="header.html" x="400" y="150" zoom="true"/>
-        <Node id="company_profile.html" x="150" y="150" zoom="true"/>
-        <Node id="register_seeker_old.html" x="900" y="150" zoom="true"/>
-        <Node id="register_seeker.html" x="400" y="300" zoom="true"/>
-        <Node id="applied_candidates.html" x="1150" y="150" zoom="true"/>
-        <Node id="post_job.html" x="650" y="300" zoom="true"/>
-    </Scope>
+    <Scope Scope="Project"/>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

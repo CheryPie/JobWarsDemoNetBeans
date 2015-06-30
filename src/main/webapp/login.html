@@ -5,68 +5,8 @@
         <title>Log In</title>
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/login.css">
-        <script>
-            function forward() {
-                $.ajax({
-                    url: 'rest/user',
-                    type: "GET",
-                    dataType: "text",
-                    statusCode: {
-                        200: function (data) {
-                            window.location.href = data;
-                        }}
-                });
-            }
-            $(document).mouseup(function (e)
-            {
-                var container = $("#register");
-                var x = $("#close");
-
-                if (!container.is(e.target) // if the target of the click isn't the container...
-                        && container.has(e.target).length === 0) // ... nor a descendant of the container
-                {
-                    container.fadeOut();
-                }
-            });
-
-            function showRegButtons() {
-                $("#register").fadeIn();
-            }
-
-            function fade() {
-                var container = $("#register");
-                container.fadeOut();
-            }
-
-            function login() {
-
-                var username = $("#userName")[0].value;
-                var password = $("#pass")[0].value;
-
-                if (username == "" || password == "") {
-                    alert("Username and password should not be empty.");
-                    return;
-                }
-
-                var data = {
-                    password: password,
-                    userName: username
-                };
-
-
-                $.ajax({
-                    url: 'rest/user/login',
-                    type: "POST",
-                    contentType: "application/json;charset=UTF-8",
-                    data: JSON.stringify(data),
-                    statusCode: {
-                        200: function () {
-                            forward();
-                        }
-                    }
-                });
-            }
-        </script>
+        <script type="text/javascript" src = js/validateFields.js></script>
+        <script type="text/javascript" src = js/login.js></script>
     </head>
     <body>
         <div id="logoContainer"></div>
@@ -100,7 +40,7 @@
                     <h2>Предлагам работа</h2>
                     <img src="img/company_reg.png" width="126" height="157">
                     <p>Намери най-добрите кандидати<br/>за твоята фирма!</p>
-                    <button type="button" onclick="location.href='register_company.html';">Намери кандидати</button>
+                    <button type="button" onclick="location.href = 'register_company.html';">Намери кандидати</button>
                 </div>
                 <div class="regType">
                     <span class="vertical-line"></span>
@@ -111,7 +51,7 @@
                     <h2>Търся работа</h2>
                     <img src="img/seeker_reg.png" width="126" height="157">
                     <p>Намери най-доброто<br/>работно място!</p>
-                    <button type="button" onclick="location.href='register_seeker.html';">Намери работа</button>
+                    <button type="button" onclick="location.href = 'register_seeker.html';">Намери работа</button>
                 </div>
             </div>
         </div>

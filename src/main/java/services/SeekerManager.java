@@ -5,8 +5,6 @@
  */
 package services;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dao.JobSeekerDAO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -21,6 +19,7 @@ import javax.ws.rs.core.Response;
 import model.JobSeeker;
 import model.LoginUser;
 import session.LoginSessionBean;
+import utils.Helper;
 
 /**
  *
@@ -58,8 +57,7 @@ public class SeekerManager {
     @Path("load_seeker_profile")
     @Produces("application/json")
     public Response setSeekerFildsValue(){
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         JobSeeker jobSeeker = loginBean.getCurrentLoginUser().getJobSeeker();
-        return Response.status(Response.Status.OK).entity(gson.toJson(jobSeeker)).build();
+        return Response.status(Response.Status.OK).entity(Helper.toJson(jobSeeker)).build();
     }    
 }

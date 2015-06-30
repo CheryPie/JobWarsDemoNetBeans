@@ -5,52 +5,8 @@
         <title>Register Company</title>
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/login.css">
-        <script type="text/javascript">
-            function register() {
-                var formUrl = $("#register_form").attr("action");
-                var username = $("#userName")[0].value;
-                var password = $("#pass")[0].value;
-
-                if (!isDataValid(password, username)) {
-                    return;
-                }
-
-                var data = {
-                    userName: username,
-                    password: password
-
-                }
-
-                $.ajax({
-                    url: 'rest/user/register_company',
-                    type: "POST",
-                    contentType: "application/json;charset=UTF-8",
-                    data: JSON.stringify(data)
-                })
-                        .success(function (data) {
-                            $("#register_form").attr("action", "login.html");
-                            console.log("success");
-                        })
-                        .fail(function (data) {
-                            $("#register_form").attr("action", "register_company.html");
-                            console.log("failure");
-                        })
-                        .always(function () {
-                            $("#register_form").submit();
-                            console.log("submitted");
-                        });
-
-            }
-
-            function isDataValid(password, username) {
-
-                if (password == "" || username == "") {
-                    alert("Please fill both fields for password and try again.");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+        <script type="text/javascript" src = js/validateFields.js></script>
+        <script type="text/javascript" src = js/register_company.js></script>
     </head>
     <body>
         <div id="logoContainer"></div>
