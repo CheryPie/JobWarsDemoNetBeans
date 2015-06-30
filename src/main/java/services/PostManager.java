@@ -27,6 +27,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import model.Company;
 import model.JobPost;
+import model.JobSeeker;
 import model.Skill;
 import session.LoginSessionBean;
 
@@ -89,6 +90,31 @@ public class PostManager {
             }
         }
         return skillIds;
+    }
+    
+        @GET
+    @Path("applied")
+    @Produces("application/json")
+    public Response getAppliedSeekerPosts(){
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
+                .create();
+        String seekerId = loginBean.getCurrentLoginUser().getJobSeeker().getJobSeekerId().toString();
+        List<JobPost> posts = null;
+        posts = postDAO.findByUser(seekerId);
+        if(posts!=null && posts.size()==0){
+            posts=postDAO.findAll();
+        }
+        return Response.status(Response.Status.OK).entity(gson.toJson(posts)).build();
+    }
+    
+    @GET
+    @Path("all_posts")
+    @Produces("application/json")
+    public Response getAllSeekerPosts(){
+        JobSeeker jobSeeker = loginBean.getCurrentLoginUser().getJobSeeker();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
+                .create();
+        return Response.status(Response.Status.OK).entity(gson.toJson(jobSeeker.getJobSeekerPosts())).build();
     }
     
 }
