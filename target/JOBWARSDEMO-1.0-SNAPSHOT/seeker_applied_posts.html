@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>JobPosts that i applied</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/seeker_applied_posts.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/tooltip.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="logoContainer"></div>
+            <nav>
+                <ul>
+                    <li><a href="post_for_seeker.html" data-toggle="tooltip"  title="Oбяви"><img src="img/adv_grey.png"></a></li>
+                    <li><a href="seeker_applied_posts.html"  data-toggle="tooltip" title="Къде съм кандидатствал"><img src="img/adv_grey.png"></a></li>
+                    <li><a href="seeker_profile.html"  data-toggle="tooltip" title="Профил"><img src="img/profi.png" id="profile"></a></li>
+                    <li><a href="LogoutServlet"  data-toggle="tooltip"  title="Изход"><img src="img/settings.png" id="settings"></a></li>
+                </ul>
+                <hr/>
+            </nav>
+        </header>
+        <div>
+            <h3 style="width:450px;">Обяви, по които съм кандидатствал</h3>
+            <table id="post_table">
+            </table>
+        </div>
+    </body>
+</html>

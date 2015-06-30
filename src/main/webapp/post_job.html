@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/post_job.css">
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/job_post.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <title>Create Adverts</title>
+    </head>
+    <body>
+        <header>
+            <div id="logoContainer"></div>
+            <nav>
+                <ul>
+                    <li><a href="company_page.html" data-toggle="tooltip" data-placement="top" title="Виж моите обяви"><img src="img/adv_grey.png"></a></li>
+                    <li><a href="post_job.html" data-toggle="tooltip" title="Публикувай обява"><img src="img/adv_grey.png"></a></li>
+                    <li><a href="applied_candidates.html" data-toggle="tooltip" title="Кандидати"><img src="img/profi.png" id="profile"></a></li>
+                    <li><a href="company_profile.html" data-toggle="tooltip" title="Профил"><img src="img/settings.png" id="settings"></a></li>
+                    <li><a href="LogoutServlet" data-toggle="tooltip" title="Изход"><img src="img/settings.png" id="settings"></a></li>
+                </ul>
+                <hr/>
+            </nav>
+        </header>
+        <form role="form" method="post" id="job_post_form">
+            <div>
+                <div>
+                    <h3>Създай обява</h3>
+                </div>
+                <div style="width: 1200px;">
+                    <table>
+                        <tr>
+                            <td style="text-align: left">Заглавие</td>
+                            <td><input type="text" name="header" id="header"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="input_description">
+                    <textarea name="description" id="description" cols="80" rows="10"></textarea>
+                </div>
+                <div>
+                    <button type="button" onclick="submitPost()">Създай обява</button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
