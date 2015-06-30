@@ -1,15 +1,15 @@
 $.ajax({
-    url: '/JOBWARSDEMO/LoginUserServlet',
+    url: 'rest/post/applied',
     type: "GET",
     dataType: "json",
     success: function (data, textStatus, jqXHR) {
-        drawPosts(data.jobSeekerPosts);
+        drawPosts(data);
     }
 });
 
 function drawPosts(posts) {
     for (var i = 0; i < posts.length; i++) {
-        drawPost(posts[i].jobPost);
+        drawPost(posts[i]);
     }
 }
 

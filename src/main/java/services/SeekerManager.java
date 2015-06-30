@@ -28,16 +28,17 @@ import utils.Helper;
 @Stateless
 @Path("seeker_profile")
 public class SeekerManager {
-     @EJB
+
+    @EJB
     private JobSeekerDAO jobSeekerDAO;
-    
+
     @Inject
     private LoginSessionBean loginBean;
-    
+
     @POST
     @Path("editJobSeekerProfile")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPost(JobSeeker jobSeeker){
+    public void doPost(JobSeeker jobSeeker) {
         LoginUser user = loginBean.getCurrentLoginUser();
         JobSeeker seeker = user.getJobSeeker();
         seeker.setFullName(jobSeeker.getFullName());
@@ -45,19 +46,19 @@ public class SeekerManager {
         user.setJobSeeker(jobSeeker);
         loginBean.setCurrentLoginUser(user);
     }
-    
+
     @POST
     @Path("editJobSeekerSkills")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void editSeekerSkills(String skills){
+    public void editSeekerSkills(String skills) {
         jobSeekerDAO.edit(loginBean.getCurrentLoginUser().getJobSeeker(), skills);
     }
-    
+
     @GET
     @Path("load_seeker_profile")
     @Produces("application/json")
-    public Response setSeekerFildsValue(){
+    public Response setSeekerFildsValue() {
         JobSeeker jobSeeker = loginBean.getCurrentLoginUser().getJobSeeker();
         return Response.status(Response.Status.OK).entity(Helper.toJson(jobSeeker)).build();
-    }    
+    }
 }

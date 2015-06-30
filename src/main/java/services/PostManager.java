@@ -25,6 +25,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import model.Company;
 import model.JobPost;
+import model.JobSeeker;
 import model.Skill;
 import session.LoginSessionBean;
 import utils.Helper;
@@ -80,6 +81,23 @@ public class PostManager {
                 contains(s.getName().toLowerCase())).map(s -> s.getSkillId().toString()).
                 collect(Collectors.toList());
         return skillIds;
+    }
+
+    @GET
+    @Path("applied")
+    @Produces("application/json")
+    public Response getAppliedSeekerPosts() {
+        String seekerId = loginBean.getCurrentLoginUser().getJobSeeker().getJobSeekerId().toString();
+        List<JobPost> posts = postDAO.findByUser(seekerId);
+        return Response.status(Response.Status.OK).entity(Helper.toJson(posts)).build();
+    }
+
+    @GET
+    @Path("all_posts")
+    @Produces("application/json")
+    public Response getAllSeekerPosts() {
+        JobSeeker jobSeeker = loginBean.getCurrentLoginUser().getJobSeeker();
+        return Response.status(Response.Status.OK).entity(Helper.toJson(jobSeeker.getJobSeekerPosts())).build();
     }
 
 }
