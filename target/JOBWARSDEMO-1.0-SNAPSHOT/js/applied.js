@@ -17,9 +17,7 @@ function drawDropdown(data) {
 
 function loadAppliedCandidates() {
     var postId = document.getElementById('sel').value;
-    console.log(postId);
     $.ajax({
-        //url: '/JOBWARSDEMO/PostSeekerServlet?postId=' + postId,
         url: 'rest/post/' + postId,
         type: "GET",
         dataType: "json",

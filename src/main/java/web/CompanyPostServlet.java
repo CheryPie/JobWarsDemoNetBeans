@@ -78,7 +78,7 @@ public class CompanyPostServlet extends HttpServlet {
         if (company != null && company.getCompanyId() != null
                 && header != null && description != null) {
             JobPost post = new JobPost();
-       //     post.setCompany(company);
+            post.setCompany(company);
             post.setDescription(description);
             post.setHeader(header);
             postDAO.create(post, skillsId);
@@ -113,7 +113,7 @@ public class CompanyPostServlet extends HttpServlet {
         if (company != null && company.getCompanyId() != null
                 && description != null) {
             JobPost post = new JobPost();
-       //     post.setCompany(company);
+            post.setCompany(company);
             post.setDescription(description.substring(0, 3999));
             post.setHeader("test");
             postDAO.create(post, skillsId);

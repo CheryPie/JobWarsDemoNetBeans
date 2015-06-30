@@ -5,60 +5,60 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonBackReference;
-
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * The persistent class for the LOGIN_USER_ROLE database table.
- * 
+ *
  */
 @Entity
-@Table(name="LOGIN_USER_ROLE")
+@Table(name = "LOGIN_USER_ROLE")
 @XmlRootElement
-@NamedQuery(name="LoginUserRole.findAll", query="SELECT l FROM LoginUserRole l")
+@NamedQuery(name = "LoginUserRole.findAll", query = "SELECT l FROM LoginUserRole l")
 public class LoginUserRole implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="LOGIN_USER_ROLE_ID")
-	@Expose
-	private Long loginUserRoleId;
+    private static final long serialVersionUID = 1L;
 
-	@Expose
-	private String name;
+    @Id
+    @Expose
+    @Column(name = "LOGIN_USER_ROLE_ID")
+    private Long loginUserRoleId;
 
-	//bi-directional many-to-one association to LoginUser
-	@OneToMany(mappedBy="role")
-	private List<LoginUser> loginUsers;
+    @Expose
+    private String name;
 
-	public LoginUserRole() {
-	}
+    //bi-directional many-to-one association to LoginUser
+    @OneToMany(mappedBy = "role")
+    private List<LoginUser> loginUsers;
 
-	public Long getLoginUserRoleId() {
-		return this.loginUserRoleId;
-	}
+    public LoginUserRole() {
+    }
 
-	public void setLoginUserRoleId(Long loginUserRoleId) {
-		this.loginUserRoleId = loginUserRoleId;
-	}
+    public Long getLoginUserRoleId() {
+        return this.loginUserRoleId;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setLoginUserRoleId(Long loginUserRoleId) {
+        this.loginUserRoleId = loginUserRoleId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public List<LoginUser> getLoginUsers() {
-		return this.loginUsers;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setLoginUsers(List<LoginUser> loginUsers) {
-		this.loginUsers = loginUsers;
-	}
+    @XmlTransient
+    public List<LoginUser> getLoginUsers() {
+        return this.loginUsers;
+    }
+
+    public void setLoginUsers(List<LoginUser> loginUsers) {
+        this.loginUsers = loginUsers;
+    }
 
 }

@@ -8,7 +8,7 @@ import model.JobSeekerPost;
 import model.JobSeekerSkillRel;
 import model.LoginUser;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-06-30T21:49:07")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-06-30T22:56:51")
 @StaticMetamodel(JobSeeker.class)
 public class JobSeeker_ { 
 

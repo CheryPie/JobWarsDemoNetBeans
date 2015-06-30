@@ -12,7 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 
 /**
@@ -27,33 +26,31 @@ public class LoginUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+        @Expose
 	@Column(name="LOGIN_USER_ID")
-	@Expose
 	private Long loginUserId;
 
-	@Expose
+        @Expose
 	private String password;
 
 	@Column(name="USER_NAME")
-	@Expose
 	private String userName;
 
 	//bi-directional many-to-one association to Company
 	@ManyToOne
+        @Expose
 	@JoinColumn(name="COMPANY_ID")
-	@Expose
 	private Company company;
 
 	//bi-directional many-to-one association to JobSeeker
 	@ManyToOne
+        @Expose
 	@JoinColumn(name="JOB_SEEKER_ID")
-	@Expose
 	private JobSeeker jobSeeker;
 
 	//bi-directional many-to-one association to LoginUserRole
 	@ManyToOne
-	@JoinColumn(name="LOGIN_USER_ROLE_ID")
-	@Expose
+        @JoinColumn(name="LOGIN_USER_ROLE_ID")
 	private LoginUserRole role;
 
 	public LoginUser() {

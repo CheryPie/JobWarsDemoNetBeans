@@ -39,12 +39,12 @@ public class JobSeekerDAO {
     @EJB
     private SkillDAO skillDAO;
 
-    public void edit(JobSeeker seeker, String skills) {
-        if (skills != null && !skills.equals("")) {
-            Skill skill = skillDAO.findSingleByName(skills);
+    public void edit(JobSeeker seeker, String name) {
+        if (name != null && !name.equals("")) {
+            Skill skill = skillDAO.findSingleByName(name);
             if (skill == null) {
                 String idStr = em.createNativeQuery("select SKILL_SEQ.NEXTVAL FROM DUAL").getSingleResult().toString();
-                skill = new Skill(new Long(idStr), skills);
+                skill = new Skill(new Long(idStr), name);
                 em.persist(skill);
             }
             if (!hasSkill(skill, seeker.getJobSeekerSkillRels())) {

@@ -12,7 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  * The persistent class for the JOB_SEEKER_SKILL_REL database table.
@@ -27,8 +26,8 @@ public class JobSeekerSkillRel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "JOB_SEEKER_SKILL_REL_ID")
     @Expose
+    @Column(name = "JOB_SEEKER_SKILL_REL_ID")
     private Long jobSeekerSkillRelId;
 
     //bi-directional many-to-one association to JobSeeker
@@ -36,8 +35,8 @@ public class JobSeekerSkillRel implements Serializable {
     @JoinColumn(name = "JOB_SEEKER_ID")
     private JobSeeker jobSeeker;
 
-    @Expose
     @ManyToOne
+    @Expose
     @JoinColumn(name = "SKILL_ID")
     private Skill skill;
 

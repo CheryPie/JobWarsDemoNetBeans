@@ -32,25 +32,18 @@ public class UserManager {
     LoginUserDAO userDAO;
     
     @Inject
-    LoginSessionBean currentLog;
+    private LoginSessionBean currentLog;
     
     @POST
     @Path("login")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response loginUser(LoginUser loginUser) {
-        
-        System.out.println("login");
-        System.out.println(loginUser.getUserName() + loginUser.getPassword());
-        
         LoginUser currentUser = userDAO.autenticate(loginUser.getUserName(), loginUser.getPassword());
-
         if (currentUser == null) {
-            System.out.println("Unauth.");
             return Response.status(HttpURLConnection.HTTP_UNAUTHORIZED).build();
 
         }
         currentLog.setCurrentLoginUser(currentUser);
-        System.out.println(currentUser.toString());
         return Response.status(HttpURLConnection.HTTP_OK).build();
     }
     
@@ -58,8 +51,6 @@ public class UserManager {
     @Path("register_company")
     @Consumes(MediaType.APPLICATION_JSON)
     public void registerCompany(LoginUser newCompany) {
-        System.out.println("Register company rest");
-        System.out.println(newCompany.getUserName() + " " + newCompany.getPassword());
         if (newCompany.getUserName() != null && newCompany.getPassword() != null && !userDAO.isExist(newCompany.getUserName())) {
             userDAO.createCompany(newCompany);
         }
@@ -69,8 +60,6 @@ public class UserManager {
     @Path("register_seeker")
     @Consumes(MediaType.APPLICATION_JSON)
     public void registerSeeker(LoginUser newSeeker) {
-        System.out.println("Register seeker rest");
-        System.out.println(newSeeker.getUserName() + " " + newSeeker.getPassword());
         if (newSeeker.getUserName() != null && newSeeker.getPassword() != null && !userDAO.isExist(newSeeker.getUserName())) {
             userDAO.createJobSeeker(newSeeker);
         }
@@ -78,8 +67,7 @@ public class UserManager {
     
     @GET
     @Produces("text/plain")
-    public String getLoggedUserPage(){
-        System.out.println("getLoggedUser");
+    public String getLoggedUserPage(){ 
         if(currentLog.getCurrentLoginUser().getRole().getLoginUserRoleId() == 1){
             return "post_for_seeker.html";
         }

@@ -6,7 +6,6 @@
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <script>
-
             function forward() {
                 $.ajax({
                     url: 'rest/user',
@@ -14,7 +13,6 @@
                     dataType: "text",
                     statusCode: {
                         200: function (data) {
-                            console.log(data);
                             window.location.href = data;
                         }}
                 });
@@ -30,6 +28,7 @@
                     container.fadeOut();
                 }
             });
+
             function showRegButtons() {
                 $("#register").fadeIn();
             }
@@ -41,7 +40,6 @@
 
             function login() {
 
-                alert("called");
                 var username = $("#userName")[0].value;
                 var password = $("#pass")[0].value;
 
@@ -52,30 +50,17 @@
 
                 var data = {
                     password: password,
-                    userName: username//,
-                            //  company: null,
-                            //jobSeeker: null,
-                            //  loginUserRole: null
-
+                    userName: username
                 };
 
-                console.log(data.password)
-                console.log(data.userName)
 
                 $.ajax({
                     url: 'rest/user/login',
                     type: "POST",
                     contentType: "application/json;charset=UTF-8",
                     data: JSON.stringify(data),
-                    // dataType: "json",
                     statusCode: {
-                        401: function () {
-                            alert("Authentication failed");
-                            console.log("Authentication failed");
-                        },
                         200: function () {
-                            alert("Authentication succeded");
-                            console.log("Authentication succeded");
                             forward();
                         }
                     }
@@ -115,7 +100,7 @@
                     <h2>Предлагам работа</h2>
                     <img src="img/company_reg.png" width="126" height="157">
                     <p>Намери най-добрите кандидати<br/>за твоята фирма!</p>
-                    <button type="button" onclick="location.href = 'register_company.html';">Намери кандидати</button>
+                    <button type="button" onclick="location.href='register_company.html';">Намери кандидати</button>
                 </div>
                 <div class="regType">
                     <span class="vertical-line"></span>
@@ -126,7 +111,7 @@
                     <h2>Търся работа</h2>
                     <img src="img/seeker_reg.png" width="126" height="157">
                     <p>Намери най-доброто<br/>работно място!</p>
-                    <button type="button" onclick="location.href = 'register_seeker.html';">Намери работа</button>
+                    <button type="button" onclick="location.href='register_seeker.html';">Намери работа</button>
                 </div>
             </div>
         </div>

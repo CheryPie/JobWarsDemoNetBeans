@@ -31,13 +31,17 @@ web\SeekerPostServlet.class
 web\LogoutServlet.class
 model\LoginUserRole.class
 security\SeekerFilter.class
+services\CompanyManager.class
 model\JobPostSkillRel.class
+services\PostManager.class
 dao\LoginUserRoleDAO.class
 model\JobSeekerPost.class
 model\Skill.class
 model\JobSeeker.class
 model\LoginUserRole_.class
 dao\JobPostSkillDAO.class
+services\UserManager.class
+services\SeekerManager.class
 session\LoginSessionBean.class
 dao\JobSeekerDAO.class
 security\WebFilter.class

@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonBackReference;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * The persistent class for the SKILL database table.
@@ -25,8 +25,8 @@ public class Skill implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "SKILL_ID")
     @Expose
+    @Column(name = "SKILL_ID")
     private Long skillId;
 
     @Expose
@@ -68,6 +68,7 @@ public class Skill implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<JobPostSkillRel> getJobPostSkillRels() {
         return this.jobPostSkillRels;
     }
@@ -76,40 +77,13 @@ public class Skill implements Serializable {
         this.jobPostSkillRels = jobPostSkillRels;
     }
 
-    public JobPostSkillRel addJobPostSkillRel(JobPostSkillRel jobPostSkillRel) {
-        getJobPostSkillRels().add(jobPostSkillRel);
-        jobPostSkillRel.setSkill(this);
-
-        return jobPostSkillRel;
-    }
-
-    public JobPostSkillRel removeJobPostSkillRel(JobPostSkillRel jobPostSkillRel) {
-        getJobPostSkillRels().remove(jobPostSkillRel);
-        jobPostSkillRel.setSkill(null);
-
-        return jobPostSkillRel;
-    }
-
+    @XmlTransient
     public List<JobSeekerSkillRel> getJobSeekerSkillRels() {
         return this.jobSeekerSkillRels;
     }
 
     public void setJobSeekerSkillRels(List<JobSeekerSkillRel> jobSeekerSkillRels) {
         this.jobSeekerSkillRels = jobSeekerSkillRels;
-    }
-
-    public JobSeekerSkillRel addJobSeekerSkillRel(JobSeekerSkillRel jobSeekerSkillRel) {
-        getJobSeekerSkillRels().add(jobSeekerSkillRel);
-        jobSeekerSkillRel.setSkill(this);
-
-        return jobSeekerSkillRel;
-    }
-
-    public JobSeekerSkillRel removeJobSeekerSkillRel(JobSeekerSkillRel jobSeekerSkillRel) {
-        getJobSeekerSkillRels().remove(jobSeekerSkillRel);
-        jobSeekerSkillRel.setSkill(null);
-
-        return jobSeekerSkillRel;
     }
 
 }

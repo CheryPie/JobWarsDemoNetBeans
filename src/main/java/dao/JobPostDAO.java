@@ -9,33 +9,12 @@ import javax.persistence.TypedQuery;
 
 import model.Company;
 import model.JobPost;
-import model.JobPostSkillRel;
-import model.Skill;
 
 @Stateless
 public class JobPostDAO {
 
     @PersistenceContext(unitName = "JOBWARS")
     private EntityManager em;
-
-//	public JobPostDAO() {
-//		this.em = Persistence.createEntityManagerFactory("jobwars")
-//				.createEntityManager();
-//	}
-//    public void create(JobPost jobPost, List<Skill> skills) {
-//        String idStr = em
-//                .createNativeQuery("select job_post_seq.nextval from dual")
-//                .getSingleResult().toString();
-//        Long idLong = new Long(idStr.substring(1, idStr.length() - 1));
-//        jobPost.setJobPostId(idLong);
-//        em.persist(jobPost);
-//        for (Skill skill : skills) {
-//            JobPostSkillRel rel = new JobPostSkillRel();
-//            rel.setJobPost(jobPost);
-//            rel.setSkill(skill);
-//            em.persist(rel);
-//        }
-//    }
 
     public void create(String companyId, String description, List<String> skills) {
         Company company = em.find(Company.class, new Long(companyId));
@@ -44,7 +23,7 @@ public class JobPostDAO {
                 .createNativeQuery("select job_post_seq.nextval from dual")
                 .getSingleResult().toString();
         post.setJobPostId(new Long(idStr));
-       // post.setCompany(company);
+        post.setCompany(company);
         post.setDescription(description);
         em.persist(post);
         if (skills != null) {

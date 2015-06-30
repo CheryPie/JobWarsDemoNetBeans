@@ -13,10 +13,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import javax.persistence.FetchType;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonBackReference;
-import org.codehaus.jackson.annotate.JsonManagedReference;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * The persistent class for the JOB_POST database table.
@@ -24,35 +24,33 @@ import org.codehaus.jackson.annotate.JsonManagedReference;
  */
 @Entity
 @Table(name = "JOB_POST")
-@XmlRootElement
 @NamedQuery(name = "JobPost.findAll", query = "SELECT j FROM JobPost j")
+@XmlRootElement
 public class JobPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "JOB_POST_ID")
     @Expose
+    @Column(name = "JOB_POST_ID")
     private Long jobPostId;
-    
+
+    @Expose
+    private String description;
+
+    //bi-directional many-to-one association to Company
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ID")
+    private Company company;
+
     @Expose
     @Column(name = "HEADER")
     private String header;
 
     @Expose
-    private String description;
-    
-//    //bi-directional many-to-one association to Company
-    @ManyToOne
-    @JoinColumn(name = "COMPANY_ID")
-    private Company company;
-
-    //bi-directional many-to-one association to JobPostSkillRel
-    @Expose
     @OneToMany(mappedBy = "jobPost", fetch = FetchType.EAGER)
     private List<JobPostSkillRel> jobPostSkillRels;
 
-//    //bi-directional many-to-one association to JobSeekerPost
     @OneToMany(mappedBy = "jobPost")
     private List<JobSeekerPost> jobSeekerPosts;
 
@@ -83,6 +81,7 @@ public class JobPost implements Serializable {
         this.company = company;
     }
 
+    @XmlTransient
     public List<JobPostSkillRel> getJobPostSkillRels() {
         return this.jobPostSkillRels;
     }
@@ -91,40 +90,13 @@ public class JobPost implements Serializable {
         this.jobPostSkillRels = jobPostSkillRels;
     }
 
-    public JobPostSkillRel addJobPostSkillRel(JobPostSkillRel jobPostSkillRel) {
-        getJobPostSkillRels().add(jobPostSkillRel);
-        jobPostSkillRel.setJobPost(this);
-
-        return jobPostSkillRel;
-    }
-
-    public JobPostSkillRel removeJobPostSkillRel(JobPostSkillRel jobPostSkillRel) {
-        getJobPostSkillRels().remove(jobPostSkillRel);
-        jobPostSkillRel.setJobPost(null);
-
-        return jobPostSkillRel;
-    }
-
+    @XmlTransient
     public List<JobSeekerPost> getJobSeekerPosts() {
         return this.jobSeekerPosts;
     }
 
     public void setJobSeekerPosts(List<JobSeekerPost> jobSeekerPosts) {
         this.jobSeekerPosts = jobSeekerPosts;
-    }
-
-    public JobSeekerPost addJobSeekerPost(JobSeekerPost jobSeekerPost) {
-        getJobSeekerPosts().add(jobSeekerPost);
-        jobSeekerPost.setJobPost(this);
-
-        return jobSeekerPost;
-    }
-
-    public JobSeekerPost removeJobSeekerPost(JobSeekerPost jobSeekerPost) {
-        getJobSeekerPosts().remove(jobSeekerPost);
-        jobSeekerPost.setJobPost(null);
-
-        return jobSeekerPost;
     }
 
     public String getHeader() {

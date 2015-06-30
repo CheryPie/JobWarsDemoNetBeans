@@ -6,8 +6,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.annotate.JsonManagedReference;
-//import org.codehaus.jackson.annotate.JsonBackReference;
 
 
 /**
@@ -22,8 +20,8 @@ public class JobPostSkillRel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+        @Expose
 	@Column(name="JOB_POST_SKILL_REL_ID")
-	@Expose
 	private Long jobPostSkillRelId;
 
 	//bi-directional many-to-one association to JobPost
@@ -33,8 +31,8 @@ public class JobPostSkillRel implements Serializable {
 
 	//bi-directional many-to-one association to Skill
 	@ManyToOne
-	@JoinColumn(name="SKILL_ID")
         @Expose
+	@JoinColumn(name="SKILL_ID")
 	private Skill skill;
 
 	public JobPostSkillRel() {
