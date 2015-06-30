@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,24 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import com.google.gson.annotations.Expose;
 import javax.persistence.FetchType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-/**
- * The persistent class for the COMPANY database table.
- *
- */
 @Entity
+@XmlRootElement
 @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
 public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "COMPANY_ID")
     @Expose
+    @Column(name = "COMPANY_ID")
     private Long companyId;
-
+    
     @Expose
     @Column(name = "NAME")
     private String name;
@@ -73,6 +72,7 @@ public class Company implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<JobPost> getJobPosts() {
         return this.jobPosts;
     }
@@ -81,6 +81,7 @@ public class Company implements Serializable {
         this.jobPosts = jobPosts;
     }
 
+    @XmlTransient
     public List<LoginUser> getLoginUsers() {
         return this.loginUsers;
     }

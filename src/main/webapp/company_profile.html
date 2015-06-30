@@ -11,6 +11,40 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/tooltip.js"></script>
         <title>Company Profile</title>
+        <script type="text/javascript">
+            function editCompany() {
+                var companyName = $("#companyName")[0].value;
+                var email = $("#email")[0].value;
+                var website = $("#website")[0].value;
+                var bulstat = $("#bulstat")[0].value;
+                var description = $("#description_inp")[0].value;
+
+                var data = {
+                    name: companyName,
+                    email: email,
+                    website: website,
+                    description: description,
+                    bulstat: bulstat,
+                };
+
+                $.ajax({
+                    url: 'rest/company',
+                    type: "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(data)
+                })
+                        .success(function (data) {
+                            $("#edit_form").attr("action", "company_profile.html");
+                        })
+                        .fail(function (data) {
+                            $("#edit_form").attr("action", "company_profile.html");
+
+                        })
+                        .always(function () {
+                            $("#edit_form").submit();
+                        });
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -28,7 +62,8 @@
         </header>
         <div>
             <h3>Профил</h3>
-            <form  role="form" method="post" action="EditCompanySerlet">
+            <!--            <form  role="form" method="post" action="EditCompanySerlet">-->
+            <form  id="edit_form" role="form" method="post">
                 <div>
                     <div id="wrapper">
                         <div>
@@ -61,7 +96,8 @@
                         </textarea>
                     </div>
                     <div id="edit_button">
-                        <button type="submit">Запис</button>
+                        <!--                        <button type="submit">Запис</button>-->
+                        <button onclick="editCompany();" type="button">Запис</button>
                     </div>
                 </div>
             </form>

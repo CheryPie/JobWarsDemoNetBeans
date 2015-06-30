@@ -1,10 +1,14 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
 import javax.persistence.*;
 
-import com.google.gson.annotations.Expose;
+import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * The persistent class for the JOB_SEEKER_POST database table.
@@ -12,19 +16,20 @@ import com.google.gson.annotations.Expose;
  */
 @Entity
 @Table(name = "JOB_SEEKER_POST")
+@XmlRootElement
 @NamedQuery(name = "JobSeekerPost.findAll", query = "SELECT j FROM JobSeekerPost j")
 public class JobSeekerPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "JOB_SEEKER_POST_ID")
     @Expose
+    @Column(name = "JOB_SEEKER_POST_ID")
     private Long jobSeekerPostId;
 
     //bi-directional many-to-one association to JobPost
-    @Expose
     @ManyToOne
+    @Expose
     @JoinColumn(name = "JOB_POST_ID")
     private JobPost jobPost;
 

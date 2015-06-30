@@ -1,5 +1,5 @@
 $.ajax({
-    url: '/JOBWARSDEMO/LoginUserServlet',
+    url: '/JOBWARSDEMO/rest/company',
     type: "GET",
     dataType: "json",
     success: function (data, textStatus, jqXHR) {

@@ -9,8 +9,6 @@ import javax.persistence.TypedQuery;
 
 import model.Company;
 import model.JobPost;
-import model.JobPostSkillRel;
-import model.Skill;
 
 @Stateless
 public class JobPostDAO {
@@ -89,6 +87,6 @@ public class JobPostDAO {
     }
     
     public List<JobPost> findAll(){
-        return em.createNamedQuery("Skill.findAll").getResultList();
+        return em.createNamedQuery("JobPost.findAll").getResultList();
     }
 }
