@@ -17,6 +17,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.LoginUser;
 import session.LoginSessionBean;
 
 /**
@@ -27,8 +28,8 @@ import session.LoginSessionBean;
         dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD,
             DispatcherType.ASYNC, DispatcherType.INCLUDE, DispatcherType.ASYNC},
         urlPatterns = {"/post_for_seeker.html", "/seeker_applied_posts.html",
-            "/seeker_profile.html","/rest/company_profile", "/rest/company_profile/*"
-            ,"/rest/post/"})
+            "/seeker_profile.html", "/rest/seeker_profile/*", "/rest/seeker_profile",
+            "/rest/post/applied", "/rest/post/all_posts"})
 public class CompanyFilter implements Filter {
 
     @Inject
@@ -40,9 +41,10 @@ public class CompanyFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponce = (HttpServletResponse) response;
-        if (userBean.getCurrentLoginUser() != null && userBean.getCurrentLoginUser().getJobSeeker() != null
-                && userBean.getCurrentLoginUser().getJobSeeker().getJobSeekerId() != null
-                && userBean.getCurrentLoginUser().getRole().getLoginUserRoleId().equals(new Long("1"))) {
+        LoginUser user = userBean.getCurrentLoginUser();
+        if (user != null && user.getJobSeeker() != null
+                && user.getJobSeeker().getJobSeekerId() != null
+                && user.getRole().getName().equals("ROLE_JOB_SEEKER")) {
             chain.doFilter(request, response);
         } else {
             httpResponce.sendRedirect(httpRequest.getContextPath() + "/company_profile.html");

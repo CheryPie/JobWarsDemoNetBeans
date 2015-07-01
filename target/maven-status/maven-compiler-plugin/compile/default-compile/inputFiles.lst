@@ -10,7 +10,9 @@ C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\services\Us
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\model\LoginUser.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\model\JobPost.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\dao\SkillDAO.java
+C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\security\CompanyFilter.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\model\Skill.java
+C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\security\SeekerFilter.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\dao\CompanyDAO.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\security\WebFilter.java
 C:\Users\Presko\Documents\NetBeansProjects\JOBWARSDEMO\src\main\java\services\PostManager.java

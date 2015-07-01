@@ -68,7 +68,8 @@ public class PostManager {
     @Path("{postId}")
     @Produces("application/json")
     public Response getAllSeekers(@PathParam("postId") String postId) {
-        return Response.status(Response.Status.OK).entity(Helper.toJson(seekerDAO.findByPost(postId))).build();
+        return Response.status(Response.Status.OK).entity(Helper.toJson(seekerDAO
+                .findByPost(postId))).build();
     }
 
     public List<String> extractSkillId(String description) {
@@ -87,9 +88,11 @@ public class PostManager {
     @Path("applied")
     @Produces("application/json")
     public Response getAppliedSeekerPosts() {
-        String seekerId = loginBean.getCurrentLoginUser().getJobSeeker().getJobSeekerId().toString();
+        String seekerId = loginBean.getCurrentLoginUser().getJobSeeker()
+                .getJobSeekerId().toString();
         List<JobPost> posts = postDAO.findByUser(seekerId);
-        return Response.status(Response.Status.OK).entity(Helper.toJson(posts)).build();
+        return Response.status(Response.Status.OK).entity(Helper
+                .toJson(posts)).build();
     }
 
     @GET
@@ -97,7 +100,8 @@ public class PostManager {
     @Produces("application/json")
     public Response getAllSeekerPosts() {
         JobSeeker jobSeeker = loginBean.getCurrentLoginUser().getJobSeeker();
-        return Response.status(Response.Status.OK).entity(Helper.toJson(jobSeeker.getJobSeekerPosts())).build();
+        return Response.status(Response.Status.OK).entity(Helper.
+                toJson(jobSeeker.getJobSeekerPosts())).build();
     }
 
 }

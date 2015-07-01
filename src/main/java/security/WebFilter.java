@@ -32,9 +32,6 @@ public class WebFilter implements Filter {
     public void destroy() {
     }
 
-    private boolean isInSeekerBlockedUrls = false;
-    private boolean isInCompanyBlockedUrls = false;
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse responce,
             FilterChain chain) throws IOException, ServletException {
@@ -43,7 +40,6 @@ public class WebFilter implements Filter {
         }
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponce = (HttpServletResponse) responce;
-        System.err.println(httpRequest.getRequestURI());
         LoginUser user = userBean.getCurrentLoginUser();
         if (user != null && user.getLoginUserId() != null) {
                 chain.doFilter(request, responce);

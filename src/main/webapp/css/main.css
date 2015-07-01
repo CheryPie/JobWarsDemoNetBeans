@@ -35,6 +35,11 @@ nav > ul > li {
     padding-right: 40px;
     width: 32px;
     height: 31px;
+    cursor: pointer;
+}
+
+nav > ul > li >img{
+    cursor: pointer;
 }
 
 nav > ul > li:last-child {
